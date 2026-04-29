@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Paper Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f8fafc; }
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); }
+        .card-grad { transition: all 0.3s ease; }
+        .card-grad:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
+    </style>
+</head>
+<body class="min-h-screen p-6 md:p-12">
+    <div class="max-w-5xl mx-auto">
+        <header class="mb-12 text-center">
+            <h1 class="text-4xl font-bold text-slate-900 mb-2">Academic Resources</h1>
+            <p class="text-slate-500">Access and review previous year question papers</p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <script>
+                const papers = [
+                    { title: "Question Paper 1", file: "Question 1.pdf", icon: "📄" },
+                    { title: "Question Paper 2", file: "Question 2.pdf", icon: "📝" },
+                    { title: "Question Paper 3", file: "Question 3.pdf", icon: "🎓" },
+                    { title: "Question Paper 4", file: "Question 4.pdf", icon: "🔍" }
+                ];
+
+                document.write(papers.map(paper => `
+                    <div class="glass p-6 rounded-3xl card-grad cursor-pointer flex flex-col items-center text-center" onclick="openPdf('${paper.file}')">
+                        <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-3xl mb-4">
+                            ${paper.icon}
+                        </div>
+                        <h3 class="font-semibold text-slate-800">${paper.title}</h3>
+                        <p class="text-xs text-slate-400 mt-2 uppercase tracking-widest font-bold">View Document</p>
+                    </div>
+                `).join(''));
+
+                function openPdf(file) {
+                    window.open(file, '_blank');
+                }
+            </script>
+        </div>
+
+        <footer class="mt-20 pt-8 border-t border-slate-200 text-center text-slate-400 text-sm">
+            &copy; 2026 DevOps Portal • Built with GitHub Actions
+        </footer>
+    </div>
+</body>
+</html>
